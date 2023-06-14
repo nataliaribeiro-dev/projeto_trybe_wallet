@@ -1,3 +1,5 @@
+export const ADD_EMAIL = 'ADD_EMAIL';
+
 const INITIAL_STATE = {
   user: {
     email: '', // string que armazena o email da pessoa usuária
@@ -6,6 +8,13 @@ const INITIAL_STATE = {
 
 const userReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
+  case ADD_EMAIL:
+    return {
+      ...state,
+      user: {
+        email: action.payload.email,
+      },
+    };
   default:
     return state;
   }

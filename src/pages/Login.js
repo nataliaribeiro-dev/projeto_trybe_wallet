@@ -1,4 +1,6 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import addEmail from '../redux/actions';
 
 class Login extends React.Component {
   state = {
@@ -10,6 +12,8 @@ class Login extends React.Component {
   handleChanges = ({ target }) => {
     const { name, value } = target;
     this.setState({ [name]: value });
+    // const { dispatch } = this.props;
+    // dispatch(addEmail(value));
   };
 
   buttonDisabled = () => {
@@ -52,4 +56,4 @@ class Login extends React.Component {
   }
 }
 
-export default Login;
+export default connect()(Login);

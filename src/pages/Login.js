@@ -1,19 +1,21 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import addEmail from '../redux/actions';
 
 class Login extends React.Component {
   state = {
     email: '',
     password: '',
-    isBtnDisabled: true,
   };
 
   handleChanges = ({ target }) => {
-    const { name, value } = target;
+    const { name, value, type } = target;
+    const { dispatch } = this.props;
+    if (type === 'email') {
+      dispatch(addEmail(value));
+    }
     this.setState({ [name]: value });
-    // const { dispatch } = this.props;
-    // dispatch(addEmail(value));
   };
 
   buttonDisabled = () => {
@@ -43,7 +45,7 @@ class Login extends React.Component {
             data-testid="password-input"
           />
           <button
-            type="button"
+            type="submit"
             onClick={ () => history.push('/carteira') }
             disabled={ this.buttonDisabled() }
           >
@@ -55,5 +57,12 @@ class Login extends React.Component {
     );
   }
 }
+
+Login.propTypes = {
+  dispatch: PropTypes.func.isRequired,
+  history: PropTypes.shape({
+    push: PropTypes.func.isRequired,
+  }).isRequired,
+};
 
 export default connect()(Login);

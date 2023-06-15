@@ -11,9 +11,7 @@ const userReducer = (state = INITIAL_STATE, action) => {
   case ADD_EMAIL:
     return {
       ...state,
-      user: {
-        email: action.payload.email,
-      },
+      user: action.payload,
     };
   default:
     return state;

@@ -1,21 +1,16 @@
-export const ADD_EMAIL = 'ADD_EMAIL';
+export const SAVE_EMAIL = 'SAVE_EMAIL';
 
 const INITIAL_STATE = {
-  user: {
-    email: '', // string que armazena o email da pessoa usuária
-  },
+  email: '', // string que armazena o email da pessoa usuária
 };
 
-const userReducer = (state = INITIAL_STATE, action) => {
+const user = (state = INITIAL_STATE, action) => {
   switch (action.type) {
-  case ADD_EMAIL:
-    return {
-      ...state,
-      user: action.payload,
-    };
+  case SAVE_EMAIL:
+    return action.payload;
   default:
     return state;
   }
 };// Esse reducer será responsável por tratar as informações da pessoa usuária
 
-export default userReducer;
+export default user;

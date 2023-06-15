@@ -9,15 +9,22 @@ class Login extends React.Component {
     password: '',
   };
 
+  // lidar com as mudanças dos inputs
   handleChanges = ({ target }) => {
-    const { name, value, type } = target;
-    const { dispatch } = this.props;
-    if (type === 'email') {
-      dispatch(addEmail(value));
-    }
+    const { name, value } = target;
     this.setState({ [name]: value });
   };
 
+  // lidar com o submit, salvar o email no estado global e redirecionar para a página de carteira
+  handleSubmit = (event) => {
+    event.preventDefault();
+    const { history, dispatch } = this.props;
+    const { email } = this.state;
+    dispatch(addEmail(email));
+    history.push('/carteira');
+  };
+
+  // verificar se o botão deve estar habilitado ou não, validando o email e a senha
   buttonDisabled = () => {
     const { email, password } = this.state;
     const minLength = 6;
@@ -26,10 +33,9 @@ class Login extends React.Component {
   };
 
   render() {
-    const { history } = this.props;
     return (
       <div>
-        <form>
+        <form onSubmit={ this.handleSubmit }>
           <input
             type="email"
             name="email"
@@ -46,7 +52,6 @@ class Login extends React.Component {
           />
           <button
             type="submit"
-            onClick={ () => history.push('/carteira') }
             disabled={ this.buttonDisabled() }
           >
             Entrar
@@ -65,4 +70,5 @@ Login.propTypes = {
   }).isRequired,
 };
 
+// export default usando o connect do react-redux para conectar o componente ao estado global
 export default connect()(Login);

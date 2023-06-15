@@ -1,7 +1,7 @@
-import { ADD_EMAIL } from '../reducers/user';
+import { SAVE_EMAIL } from '../reducers/user';
 
 const addEmail = (email) => ({
-  type: ADD_EMAIL,
+  type: SAVE_EMAIL,
   payload: {
     email,
   },

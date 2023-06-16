@@ -21,7 +21,7 @@ class Wallet extends React.Component {
         <Header
           email={ email }
         />
-        ------------------------------------------------
+
         <WalletForm />
       </div>
     );

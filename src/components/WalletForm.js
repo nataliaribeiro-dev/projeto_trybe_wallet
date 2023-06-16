@@ -24,7 +24,13 @@ class WalletForm extends Component {
     const { id, value, currency, method, tag, description } = this.state;
 
     dispatch(saveExpenses({
-      id, value, currency, method, tag, description,
+      id,
+      value,
+      currency,
+      method,
+      tag,
+      description,
+
     }));
 
     dispatch(thunkExchangeRates());

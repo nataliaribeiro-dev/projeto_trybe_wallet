@@ -26,7 +26,7 @@ class Header extends Component {
           { email }
         </p>
         <p data-testid="total-field">
-          Despesa Total:
+          Despesa Total: 0
           {' '}
           {' '}
           {/* { this.totalExpenses() } */}

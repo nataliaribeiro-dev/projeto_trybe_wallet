@@ -6,7 +6,7 @@ import { thunkExchangeRates } from '../redux/actions/index';
 class WalletForm extends Component {
   state = {
     id: 0,
-    value: 0,
+    value: '0',
     description: '',
     currency: 'USD',
     method: 'Dinheiro',

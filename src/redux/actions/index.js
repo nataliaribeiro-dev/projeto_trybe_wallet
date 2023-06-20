@@ -4,6 +4,7 @@ export const FETCH_CURRENCIES = 'FETCH_CURRENCIES';
 export const FETCH_EXCHANGE_RATES = 'FETCH_EXCHANGE_RATES';
 export const SAVE_EXPENSES = 'SAVE_EXPENSES';
 export const DELETE_EXPENSE = 'DELETE_EXPENSE';
+export const EDIT_EXPENSE = 'EDIT_EXPENSE';
 
 export const addEmail = (email) => ({
   type: SAVE_EMAIL,
@@ -30,6 +31,11 @@ export const deleteExpense = (id) => ({
   payload: id,
 });
 
+export const editExpense = (id) => ({
+  type: EDIT_EXPENSE,
+  payload: id,
+});
+
 // -----------------------------THunk--------------------------------
 
 // essa função é um thunk que serve para fazer requisições assíncronas e neste caso, ela faz uma requisição para a API e retorna um objeto com as moedas.
@@ -44,7 +50,6 @@ export const thunkCurrencies = () => async (dispatch) => {
 export const thunkExchangeRates = (expenses) => async (dispatch) => {
   const response = await fetch('https://economia.awesomeapi.com.br/json/all');
   const data = await response.json();
-  console.log(data);
   delete data.USDT;
 
   dispatch(saveExpenses({ ...expenses, exchangeRates: data }));

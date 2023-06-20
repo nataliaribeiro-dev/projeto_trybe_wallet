@@ -3,6 +3,7 @@ import { SAVE_EMAIL } from '../reducers/user';
 export const FETCH_CURRENCIES = 'FETCH_CURRENCIES';
 export const FETCH_EXCHANGE_RATES = 'FETCH_EXCHANGE_RATES';
 export const SAVE_EXPENSES = 'SAVE_EXPENSES';
+export const DELETE_EXPENSE = 'DELETE_EXPENSE';
 
 export const addEmail = (email) => ({
   type: SAVE_EMAIL,
@@ -22,6 +23,11 @@ const fetchCurrencies = (currencies) => ({
   payload: {
     currencies,
   },
+});
+
+export const deleteExpense = (id) => ({
+  type: DELETE_EXPENSE,
+  payload: id,
 });
 
 // -----------------------------THunk--------------------------------
